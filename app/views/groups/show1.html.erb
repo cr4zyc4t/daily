@@ -1,0 +1,21 @@
+<h1> List Of Employees Of Group </h1>
+<h3> Office :<%= @group.name%></h1>
+<p id="notice"><%= notice %></p>
+
+<table class = "table" border=1 >
+	<tr>
+		<th class = "cell" >Email</th>
+		<th class = "cell" >Possition</th>
+		<th colspan=1>Control</th>
+			
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td class = "cell"><%= user.email %></td>
+			<td class = "cell"><%= user.chuc_vu(user) %></td>
+			<td class = "cell"><%= link_to "show", :controller => :users, :action => :show, :id => user.id %></td>
+		</tr>
+	<%end%>
+
+</table>
+<%= link_to "Back", groups_path %>

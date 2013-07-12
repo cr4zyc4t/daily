@@ -1,0 +1,22 @@
+<h1>Welcome to my website!</h1>
+ User: <%= @user.email %>|&nbsp; &nbsp; User level:<%= @user.level %><br>
+<% if @catalog.errors.any? %>
+    <div class="error_explanation">
+      <div class ="error_header"><%= pluralize(@catalog.errors.count, "error") %> prohibited this catalog from being saved:</div>
+
+      <ul>
+      <% @catalog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+Write template report: 
+<%= form_for @catalog do |f| %>
+	Title <%= f.text_field :name %><br>
+	Body <%= f.text_area :body %><br>
+	<%= f.submit %>
+	<%= link_to "Back", '/catalogs'%>
+<% end %>
+<hr>

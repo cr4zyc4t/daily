@@ -1,0 +1,33 @@
+
+
+<br />
+<h4> User: <%= @user.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user) %><br> </h4>
+
+<h4>
+	Write report:
+</h4> 
+<%= form_for @report, :url => {:action => :create, :id => @user.id},:html => {:multipart =>true} do |f| %>
+<% if @report.errors.any? %>
+    <div class="error_explanation">
+    	
+      <div class = "error_header"><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</div>
+
+      <ul>
+      <% @report.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  	
+	<%= f.hidden_field :catalog_id  %>
+	Title: <br> <%= f.text_field :title %><br>
+	Body:<br> <%= f.text_area :body %><br>
+	<%= f.submit %>
+  <p>
+     <b> attachment </b><br/>
+     <%= f.file_field :attach %>
+  </p>
+<% end %>
+<%= link_to "back", reports_path %>
+<hr>

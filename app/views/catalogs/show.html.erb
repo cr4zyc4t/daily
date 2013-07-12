@@ -1,0 +1,19 @@
+<br />
+
+<h4> User: <%= @user.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user) %><br> </h4>
+<h4>
+	Catalog: <%= @catalog.name %>
+</h4>
+
+<%= form_for @catalog do |f| %>
+	<h4>
+		<%= f.label :body, "Body" %>
+	</h4>
+	<%= f.text_area :body %><br>
+<% end %>	
+
+<%= link_to "Edit", edit_catalog_path(@catalog) %>
+<%= link_to "Delete", @catalog, :method => :delete, :confirm => "Are you sure?" %>
+<%= link_to "Create new report", :controller => :reports, :action => :new, :id => @catalog.id %>
+<br>
+<%= link_to 'Back','/catalogs' %>

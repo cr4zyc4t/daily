@@ -1,0 +1,62 @@
+
+
+<h1>Welcome to my website!</h1>
+
+<div class="wrap">
+<div id = "user"> User: <%= @user.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user) %><br> </div>
+<!-- Menu - start -->
+
+<!-- Menu - end -->
+
+
+
+
+<% if @user.level == 3 %>
+
+	<%= paginate @reports %>
+
+	<h2>List reports:</h2> <br>
+	<% if !@reports.blank? %>
+	  <% for item in @reports %>
+	    <div>
+	    	<h4 ><%= link_to item.title, :action => :show, :id => item.id %>
+	    	     | Report of : <%= item.user.email %> </h4>
+	    </div>
+	    	
+	    <hr>
+	  <% end %>	  
+	<% end %>
+<% elsif @user.level == 1 %>
+	<h2>List reports:</h2> <br>
+	<% if !@reports.blank? %>
+	  <% for item in @reports %>
+	    <h4 ><%= link_to item.title, :action => :show, :id => item.id %></h4><br>
+	    <hr>
+	  <% end %>	  
+	<% end %>
+<% elsif @user.level == 2 %>
+
+	<% @users.each do |item| %>
+	<hr>
+		<h2>Report of <%= item.email %> :</h2><br>
+		<% @reports = Report.find_all_by_user_id(item.id)	%>
+		<% if !@reports.blank? %>
+	  		<% for item in @reports %>
+	    		<h4 ><%= link_to item.title, :action => :show, :id => item.id %></h4><br>
+	    		
+	    		<hr>
+	  		<% end %>	  
+		<% end %>
+	<% end %>
+	<% elsif @user.level == nil %>
+	<%= redirect_to login_path, :notice => "waiting for confirmation." %>
+<% end %>
+<br>
+
+<%if @user.level ==3 %>
+<%= link_to "New catalog", catalogs_path%> <br>
+<%elsif ((@user.level != 2) || (@user.level != 1))%>
+<%= link_to "New report", catalogs_path%> <br>
+<% end %>
+
+</div>

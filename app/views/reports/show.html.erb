@@ -1,0 +1,23 @@
+<br>
+<h4>
+	Title Of Report : <%= @report.title %>
+</h4>
+<%= form_for @catalog do |f| %>
+	<h4>
+		Type Of Catalog : <%= @catalog.name %>
+	</h4>
+	
+<% end %>
+<%= form_for @report do |f| %>
+	<h4>
+		<%= f.label :body %>
+	</h4>
+	<%= f.text_area :body %><br>
+	<%= f.label :Created_at %>
+	<%= f.text_field :created_at  %>
+	<% if !@report.attach.blank? %>
+		<a href="<%= @report.attach.url %> "><b> File attached </b></a><br/>
+	 <% end %>
+<% end %>	
+
+<%= link_to "Back", reports_path %>

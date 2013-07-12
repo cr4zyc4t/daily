@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily</title>
+
+  	<%= stylesheet_link_tag    "application", :media => "all" %>
+
+  	<link rel="stylesheet" type="text/css" href="app/assets/stylesheets/application.css" >
+
+  	<%= javascript_include_tag "application" %>
+  	<%= csrf_meta_tags %>
+
+  
+  
+</head>
+
+<body>
+<div class=wrapper >
+
+<div class=action_bar>
+	<span class = "float_right"><% if @current_user != nil %>
+			<%= link_to "Logout | ", logout_path %>
+		<% end %>
+	</span>
+
+	<% if @current_user != nil %>
+		<span class = "float_right"><%= link_to "Information | ", :controller => :users, :action => :show ,:id => @current_user.id%></span>
+		<!-- <span class = "float_right"><%= link_to "Email | ", :controller => :users, :action => :show ,:id => @current_user.id %></span> -->
+	<% end %>
+</div>
+
+<nav>
+	<ul class=menu>
+		<% if  @current_user != nil && @current_user.level != nil   %>
+			<li class="float_left"><%= link_to "Home", reports_path %></li>
+			
+			<% if  @current_user != nil && @current_user.level != 1   %>
+				<li class="float_left"><%= link_to "User Manager", users_path %></li>
+		
+					<% if @current_user != nil && @current_user.level != 2 %>
+				<li class="float_left"><%= link_to "Group Manager", groups_path %></li>
+					<% end %>
+				<% end %>
+		<% end %>	
+	</ul>
+</nav>
+
+
+
+
+<p class = "notice" ><%= content_tag(:p, notice, :class => 'notice') if notice.present? %> </p>
+<p class = "notice" ><%= content_tag(:p, alert, :class => 'alert') if alert.present? %> </p>
+
+<%= yield %>
+
+<footer>
+	<p>nhom 5. BKtrainning</p>
+</footer>
+</div>
+</div>
+</body>
+</html>

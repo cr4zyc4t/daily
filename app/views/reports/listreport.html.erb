@@ -1,0 +1,7 @@
+<h1>Welcome to my website!</h1>
+User: <%= @reportuser.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user) %><br>
+List report of <%= @reportuser.email %>
+<% @reports.each do |item| %>
+	<h3><%= link_to item.title, :action => :show, :id => item.id %></h3><br>
+	    <hr>
+<% end %>	  

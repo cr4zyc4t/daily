@@ -1,0 +1,54 @@
+tr.red {
+	color: red;
+}
+
+.table {
+	margin: 0 auto;
+	border: 1px solid #5D478B;
+	font-size: 105%;
+	background: #FFFF66;
+}
+
+.cell {
+	border: 1px solid #5D478B;
+}
+
+.head_center {
+	margin: 0 auto;
+}
+
+.notice {
+	color: red;
+}
+
+.float_right {
+	
+	float: right;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+h1, h2, h3 {
+	text-align: center;
+	color: #228B22;
+}
+
+.wrap {
+	width: 80%;
+	margin: auto;
+}
+
+.form_wrap {
+	width: 50%;
+	margin: 200px 500px;
+}
+
+.clear_all {
+	clear: all;
+}
+
+footer {
+	text-align: center;
+}

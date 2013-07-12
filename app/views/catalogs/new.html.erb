@@ -1,0 +1,28 @@
+<h1>Welcome to my website!</h1>
+<h4>
+	User: <%= @user.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user) %>
+</h4>
+<% if @catalog.errors.any? %>
+    <div class="error_explanation">
+      <div class ="error_header"><%= pluralize(@catalog.errors.count, "error") %> prohibited this catalog from being saved:</div>
+
+      <ul>
+      <% @catalog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h4>
+	Write template report:
+</h4> 
+<%= form_for @catalog do |f| %>
+	Title <br> <%= f.text_field :name %><br>
+	Body <br><%= f.text_area :body %><br>
+	<div>
+	<%= f.submit %>
+	<%= link_to "Back", catalogs_path %>
+	</div>
+<% end %>
+<hr>

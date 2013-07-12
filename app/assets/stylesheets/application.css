@@ -1,0 +1,114 @@
+tr.red {
+	color: red;
+}
+
+.table {
+	width: 80%;
+	margin: auto;
+	border: 1px solid #5D478B;
+	font-size: 105%;
+	background: #FFFF99;
+}
+
+.cell {
+	border: 1px solid #5D478B;
+}
+
+.head_center {
+	margin: 0 auto;
+}
+
+.notice {
+	color: red;
+}
+
+.float_right {
+	
+	float: right;
+}
+
+.float_left {
+	
+	float: left;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+h1, h2 {
+	text-align: center;
+	color: #228B22;
+}
+
+.wrap {
+	width: 80%;
+	margin: auto;
+}
+
+.form_wrap {
+	width: 50%;
+	margin: 200px 500px;
+}
+
+.clear_all {
+	clear: all;
+}
+
+footer {
+	text-align: center;
+}
+
+ul.menu li {
+	display: block;
+}
+
+ul.menu li.float_left a{
+	display: block;
+	margin-right: 10px;
+}
+
+.navi {
+	width: 20%;
+	margin: 0 auto;
+}
+
+div#user {
+	text-align: right;
+	font-size: 110%;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.wrap {
+	width: 80%;
+}
+
+.error_explanation {
+	text-align: left;
+	color: red;
+}
+
+.error_header {
+	font-size: 1.5em;
+	font-weight: bold;
+	text-align: left;
+}
+h4 {
+	text-align: left;
+	color: black;
+	font-style: italic;
+	font-weight: bold;
+}
+h3 {
+	text-align: center;
+	color: black;
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+.wrapper {
+	width: 1024px;
+	float: center;
+}

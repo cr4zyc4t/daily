@@ -1,0 +1,24 @@
+<div class=wrapper>
+	<h1>Welcome to my website!</h1>
+	User: <%= @user.email %>|&nbsp; &nbsp; Possition:<%= @user.chuc_vu(@user)%>
+	<br>
+	<% if @user.level == 2 || @user.level ==1 %>
+	<h4> Please select the kind of catalog to create a new report</h4>
+	<% end %>
+	<h2>List catalogs:</h2>
+	<br>
+	<% if !@catalogs.blank? %>
+	<% for item in @catalogs %>
+	<h3><%= link_to item.name, :action => :show, :id => item.id %></h3>
+	<br>
+	<hr>
+	<% end %>
+	<% end %>
+
+	<div>
+		<% if @user.level ==3%>
+		<%= link_to "New catalog", new_catalog_path %>
+		<% end%>
+		<%= link_to "Back" ,reports_path %>
+	</div>
+</div>

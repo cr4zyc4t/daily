@@ -1,0 +1,13 @@
+<h1>Information Of User:</h1>
+
+<h2>Email:</h2>
+	<h3><%= @user.email %></h3>
+	
+	
+<h2>Position:</h2>
+	<h3><%= @user.chuc_vu(@user)%></h3>
+	
+<%if @user != nil && @user.level !=3%>
+	<h2>Office</h2>
+		<h3><%= @user.group.name %></h3>
+<%end %>

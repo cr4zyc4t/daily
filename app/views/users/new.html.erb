@@ -1,0 +1,52 @@
+<h1>Information for a new user</h1>
+
+<div class = "form_wrap">
+
+<% if @user.errors.any? %>
+    <div class="error_explanation">
+      <div class="error_header"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</div>
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+	<div>
+		<%= f.label :Email %> <br/>
+		<%= f.text_field :email %>
+	</div>
+	
+	<div>
+		<%= f.label :Password %> <br/>
+		<%= f.password_field :password %>
+	</div>
+
+	<div>
+		<%= f.label :Password_confirmation %> <br/>
+		<%= f.password_field :password_confirmation %>
+	</div>
+	
+	<% if (@current_user != nil) %>
+	<div>
+		<%= f.label :Possition %> <br />
+		<%= f.select :level, options_for_select([['Leader', 2], ['Employee', 1]]) %>
+	</div>
+
+	<div>
+		<%= f.label :group_id %>  <br />
+		<%= f.collection_select :group_id, Group.all, :id, :name  %>
+	</div>
+
+	<% end %>
+	
+	<div>
+		<%= f.submit 'create' %>
+		<%= link_to 'Back', users_path %>
+
+	</div>
+	
+<% end %>
+</div>

@@ -1,0 +1,48 @@
+<h1>List Of Employees </h1>
+
+<table class = "table" %>
+	<tr>
+		<th class = "cell" >Email</th>
+		<th class = "cell">Possition</th>
+		<th class = "cell">Office</th>
+		<th colspan=3>Control</th>
+		
+	</tr>
+	
+	<% if @users != nil %>
+
+
+		<% if current_user.level == 3 %> <%= paginate @users %> <% end %>
+		
+
+	<% @users.each do |user| %>
+	
+	<% color = ((user.level == 0 || user.level == nil)? "red": "black" ) %>
+	<tr class = <%= color %> >
+		<td class = "cell"><%= user.email %></td>
+		<td class = "cell"><%= user.chuc_vu(user) %></td>
+		<% id = user.group_id%>
+		<td class = "cell"><%= user.phong(id) %></td>
+		
+		<% if current_user != nil && current_user.level == 3 && user.level != 3 %>
+		 	<td class = "cell"><%= link_to "show", user %></td>
+			<td class = "cell"><%= link_to "edit", edit_user_path(user.id) %></td>
+			<td class = "cell"><%= link_to "destroy", user,  :method => :delete ,data: { confirm: 'Are you sure?' }%></td>
+		<% end %>
+		<% if current_user != nil && current_user.level == 2 %>
+		 	<td class = "cell"><%= link_to "show", user %></td>
+		 <% end %>
+	</tr>
+	<% end %>
+	<% end %>	
+
+</table>
+
+<div class = "navi">
+	<% if current_user != nil && current_user.level == 3 || current_user.level==2%>
+	<span> <%= link_to "Back" ,reports_path %> </span>
+	<% if current_user.level == 3 %>
+		<span > <%= link_to "New userer", new_user_path %> </span>
+	<% end %>
+	<% end %>
+</div>
